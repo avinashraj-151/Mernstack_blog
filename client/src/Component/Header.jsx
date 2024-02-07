@@ -8,8 +8,8 @@ function Header() {
     return (
         <Navbar className='border-b-2'>
             <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-bold dark:text-white'>
-                <span className='px-2 py-1 bg-gradient-to-t from-indigo-700 via-purple-400 to-pink-800 rounded-xl  text-white'>Codiwizz</span>
-                Blog
+                <span className='px-2 py-1 bg-gradient-to-t from-indigo-700 via-purple-400 to-pink-800 rounded-xl  text-white'>Codiwizz Blog</span>
+                {/* Blog */}
             </Link>
             <form>
                 <TextInput
