@@ -10,7 +10,7 @@ const PersonRouter = require('./Router/use.router')
 app.use('/user', PersonRouter)
 const auth_singup = require('./Router/auth.router')
 
-app.use('/signup', auth_singup)
+app.use('/api/auth', auth_singup)
 mongoose.connect(
   process.env.MONGO
 ).then(() => {
