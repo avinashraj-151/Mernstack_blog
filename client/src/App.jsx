@@ -5,9 +5,11 @@ import Project from "./pages/Project";
 import Signin from "./pages/Signin";
 import Singup from "./pages/Singup";
 import Dashboard from "./pages/Dashboard";
+import Header from "./Component/Header";
 function App() {
   return (
     <BrowserRouter>
+      <Header></Header>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
