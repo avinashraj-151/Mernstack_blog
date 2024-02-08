@@ -7,7 +7,7 @@ const singup =async(req, res,next) =>{
         
     let {username,email,password} = req.body;
     if(!username || !email || !password || username==''|| password==''|| email==''){
-        next(errorHandler(400,'Please fill all the fields'))
+        return next(errorHandler(400,'Please fill all the fields'))
         // return res.status(400).json({error: 'Please fill all the fields'});
     }else{
         password =bcryptjs.hashSync(password,10);

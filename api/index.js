@@ -12,7 +12,8 @@ const auth_singup = require('./Router/auth.router')
 
 app.use('/api/auth', auth_singup)
 mongoose.connect(
-  process.env.MONGO
+  // process.env.MONGO
+  'mongodb+srv://avinashraj:avinashrajj@mernblog.jc9gol0.mongodb.net/?retryWrites=true&w=majority'
 ).then(() => {
   console.log('connected to mongodb')
 }).catch(err => console.log(err))
