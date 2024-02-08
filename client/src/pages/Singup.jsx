@@ -2,7 +2,7 @@
 import { Button, Checkbox, Label, TextInput, Spinner } from 'flowbite-react';
 
 import { Link, useNavigate } from 'react-router-dom';
-import image from '../image/signupimage2.png';
+import image from '../image/signupimage3.png';
 import backgroundImage from '../image/background.webp';
 import { useState } from 'react';
 // import { FaTh } from 'react-icons/fa';
@@ -43,9 +43,9 @@ function Singup() {
     }
     // console.log(formdata);
     return (
-        <div className='min-h-screen mt-0 bg-center md:mt-10' >
+        <div className='min-h-screen mt-0 bg-center md:mt-10 ' >
             {/* left  */}
-            <div className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5 shadow-2xl bg-center' style={{ backgroundImage: `url(${backgroundImage})` }}>
+            <div className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5 shadow-2xl bg-center  mb-24' style={{ backgroundImage: `url(${backgroundImage})` }}>
                 <div className='flex-1 mt-2'>
                     <img src={image} alt='' />
                 </div>
