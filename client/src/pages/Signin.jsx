@@ -7,30 +7,31 @@ import { useState } from 'react';
 // import { FaTh } from 'react-icons/fa';
 // import Toast from '../Component/Toast';
 import Component from '../Component/Toast';
-
+import { SigninSuccess, SigninStart, SigninFail } from '../redux/user/userSlice';
+import { useDispatch, useSelector } from 'react-redux'
 function Singin() {
     const [formdata, setformdata] = useState({});
-    // const [errormessage, seterrormessage] = useState(null);
     const navigate = useNavigate();
-    const [loading, setloading] = useState(false);
-    const [error, seterror] = useState(null);
+    // const [loading, setloading] = useState(false);
+    // const [error, seterror] = useState(null);
+    const { loading, error } = useSelector(state => state.user)
+    const dispath = useDispatch();
     function handelchange(event) {
         setformdata({ ...formdata, [event.target.id]: event.target.value.trim() });
     }
     // console.log(formdata)
     function handelToasttoggle() {
-        seterror(null);
+        // seterror(null);
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
         // console.log(formdata);
         if (!formdata.email || !formdata.password) {
             // return seterrormessage('Please fill all the fields');
-            seterror('Please fill all the fields');
-            return;
+            return dispath(SigninFail("Please fill all the fields"))
         }
         try {
-            setloading(true);
+            dispath(SigninStart())
             const res = await fetch('/api/auth/signin', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -38,18 +39,17 @@ function Singin() {
             });
             const data = await res.json();
             // console.log(data);
-
-            setloading(false);
-            if (res.ok)
+            if (data.success === false) {
+                dispath(SigninFail(data.message));
+            }
+            // setloading(false);
+            if (res.ok) {
+                dispath(SigninSuccess(data));
                 navigate('/');
-            else {
-                // console.log(res.status)
-                seterror('Give correct user credentials')
             }
         } catch (err) {
             // console.log(err)
-            setloading(false);
-            seterror('Give correct user credentials')
+            dispath(SigninFail(err.message));
 
         }
     }
@@ -102,7 +102,7 @@ function Singin() {
                             <span className='text-blue-600'>Sign up</span>
                         </Link>
                     </div>
-                    {error && <Component message={error} onclick={handelToasttoggle}></Component>}
+                    {error && <Component onclick={handelToasttoggle}></Component>}
                 </div>
                 {/*  */}
 
